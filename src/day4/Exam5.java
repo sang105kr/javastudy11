@@ -12,7 +12,7 @@ public class Exam5 {
     int[] coinUnit = {500, 100, 50, 10};
     int[] coinCnt = {5, 5, 5, 5};  //2500+500+250+50 = 3300
 
-    int money = 3300;
+    int money = 2_680;
     System.out.println("money=" + money);
 
     for (int i = 0; i < coinUnit.length; i++) {
@@ -27,9 +27,9 @@ public class Exam5 {
         coinCnt[i] = 0;
       }
       //3) 거스름돈 잔액
-      money -= coinNum * coinUnit[i];
+      money -= coinNum * coinUnit[i]; // 800=3300-2500,   300=800-500   50=300-250, 0=50-50
 
-      System.out.println(coinUnit[i] + "원: " + coinNum);
+      System.out.println(coinUnit[i] + "원: " + coinNum);  //
     }
     if (money > 0) {
       System.out.println("거스름돈 부족!");

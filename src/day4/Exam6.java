@@ -1,18 +1,15 @@
 package day4;
 /*
-    자판기 거스름돈 계산
-    동전 = 500,100,50,10
+  main메소드에 배열 넘기기
  */
-public class Exam4 {
+public class Exam6 {
   public static void main(String[] args) {
     int[] coinUnit = {500, 100, 50, 10};
-    //case1)
-    //int[] coinUnit = new int[]{500, 100, 50, 10};
-    //case2)
-    //int[] coinUnit = new int[5];
-    //coinUnit[0] = 500; coinUnit[1] = 100; coinUnit[2] = 50; coinUnit[3] = 10;
 
-    int money = 2_680;
+//    int money = 2_680;
+//    String tmp = args[0];   // "123"
+//    int money = Integer.parseInt(tmp);   // "2680" => 2680
+    int money = Integer.parseInt(args[2]);
     System.out.println("money="+money);
 
     for (int i = 0; i < coinUnit.length; i++) {
