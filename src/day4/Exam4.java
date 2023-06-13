@@ -15,6 +15,8 @@ public class Exam4 {
       money = money % coinUnit[i];  // money %= coinUnit[i];
     }
 
+    System.out.println(money);
+
 //    money=2680
 //    500원:5   <= 2500
 //    100원:1   <= 2600
