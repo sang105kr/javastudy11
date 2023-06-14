@@ -1,6 +1,6 @@
 package day4;
 /*
-    자판기 거스름돈 계산
+    동전교환기
     동전 = 500,100,50,10
  */
 public class Exam4 {
@@ -17,7 +17,7 @@ public class Exam4 {
 
     for (int i = 0; i < coinUnit.length; i++) {
       System.out.println(coinUnit[i]+"원:" + (money / coinUnit[i]));
-      money = money % coinUnit[i];  // money %= coinUnit[i];
+      money %= coinUnit[i];  // money = money % coinUnit[i];
     }
 
     System.out.println(money);
