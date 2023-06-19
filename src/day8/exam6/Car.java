@@ -4,8 +4,10 @@ public class Car {
   private final int carNumber;      //차량번호
   private int speed;                //운행속도
   private String color;             //색상
-  private static int uniqueNumber;  //차량고유번호(정수로 순차적인 번호계산용도)
   private String displayUniqueNumber; //차량고유번호(문자열로 001,002,003)
+
+  private static int uniqueNumber;  //차량고유번호(정수로 순차적인 번호계산용도)
+  private final int MAX_SIZE_OF_UNIQUE_ENUMBER = 3; //차량고유번호 자리수
 
   public Car(int carNumber, String color) {
     this.carNumber = carNumber;
@@ -24,7 +26,7 @@ public class Car {
 
     //2) 차량고유번호 전체자리수에서 "0"으로 채울 갯수 계산
     String zero = "";
-    for (int i = 1; i <= 3 - lengthOfCarNumber; i++) {
+    for (int i = 1; i <= MAX_SIZE_OF_UNIQUE_ENUMBER - lengthOfCarNumber; i++) {
       zero += "0";
     }
 
