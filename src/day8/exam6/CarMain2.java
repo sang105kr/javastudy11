@@ -38,7 +38,14 @@ public class CarMain2 {
 //    }
 //
 //    System.out.println(zero + num);
+      Car[] cargo = new Car[3];
+      cargo[0] = new Car(1111, "검정");
+      cargo[1] = new Car(2222, "흰색");
+      cargo[2] = new Car(3333, "빨강");
 
+    for (int i = 0; i < cargo.length; i++) {
+      System.out.println(cargo[i]);
+    }
 
   }
 }
