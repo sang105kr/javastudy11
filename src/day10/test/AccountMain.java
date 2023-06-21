@@ -20,9 +20,26 @@ public class AccountMain {
     }
     return findedAccountIndex;
   }
-  public static void main(String[] args) {
 
-    Account[] accounts = new Account[5];
+  /**
+   * 사용중인 계좌수 반환
+   * @param accounts 계좌정보
+   * @return  사용중인 계좌수
+   */
+  private static int countOFUsing(Account[] accounts) {
+    int cnt = 0;
+    for (int i = 0; i < accounts.length; i++) {
+      if (accounts[i] != null) {
+        cnt++;
+      }
+    }
+    return cnt;
+  }
+
+
+  public static void main(String[] args) {
+    final int SIZE_OF_ACCOUNT = 5;
+    Account[] accounts = new Account[SIZE_OF_ACCOUNT];
     Scanner scanner = new Scanner(System.in);
     boolean stop = false;
 
@@ -34,12 +51,21 @@ public class AccountMain {
         case "1": //신규
           System.out.print("예금주 >> ");
           String accountOwnerName = scanner.nextLine();
+
+          //1) 계좌생성 한도 체크
+          if(SIZE_OF_ACCOUNT == countOFUsing(accounts)){
+            System.out.println("계좌생성 한도 초과로 인해 더이상 계좌생성할수 없습니다.");
+            break;
+          }
+
+          //2)계좌생성
           for (int i = 0; i < accounts.length; i++) {
             if(accounts[i] == null){
               accounts[i] = new Account(accountOwnerName);
               break;
             }
           }
+
           break;
         case "2":  //폐지
           System.out.print("계좌번호 >> ");
@@ -120,13 +146,14 @@ public class AccountMain {
 
           break;
         case "6": // 전체조회
-          int usingCount = 0;
+//          int usingCount = 0;
           for (int i = 0; i < accounts.length; i++) {
             if(accounts[i] != null) {
               System.out.println(accounts[i]);
-              usingCount++;
+//              usingCount++;
             }
           }
+          int usingCount = countOFUsing(accounts);
           System.out.println("사용중인 계좌수 : " + usingCount);
           System.out.println("잔여계좌수 : " + (accounts.length - usingCount));
           break;
