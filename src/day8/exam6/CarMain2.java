@@ -44,7 +44,12 @@ public class CarMain2 {
       cargo[2] = new Car(3333, "빨강");
 
     for (int i = 0; i < cargo.length; i++) {
-      System.out.println(cargo[i]);
+      System.out.println(cargo[i].toString());
+      cargo[i].getSpeed();
+    }
+
+    for (int i = 0; i < cargo.length; i++) {
+      System.out.println(cargo[i].toString());
     }
 
   }
