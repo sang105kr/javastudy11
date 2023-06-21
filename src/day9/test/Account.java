@@ -2,7 +2,7 @@ package day9.test;
 
 public class Account {
   private String accountName;   //예금주이름
-  private String accountNumber; //계좌번호
+  private String accountNumberAccumulator; //계좌번호
   private int balance;          // 잔고
   private static int accountNum;  //계좌번호 카운트
 
@@ -11,7 +11,7 @@ public class Account {
   public Account(String accountName) {
     this.accountName = accountName;
     //계좌번호생성
-    this.accountNumber = createAccountNumber(++accountNum);
+    //this.accountNumberAccumulator = createaccountNumberAccumulator(++accountNum);
   }
 
   //입금
@@ -48,7 +48,7 @@ public class Account {
   @Override
   public String toString() {
     return "예금주명 : " + accountName +
-        ", 계좌번호 : " + accountNumber +
+        ", 계좌번호 : " + accountNumberAccumulator +
         ", 잔액 : " + balance;
   }
 
@@ -64,8 +64,10 @@ public class Account {
 
   //계좌번호 반환
   public String getAccountNumber() {
-    return accountNumber;
+//    return accountNumber;
+    return null;
   }
+
 
   //잔액 반환
   public int getBalance() {

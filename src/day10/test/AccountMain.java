@@ -36,7 +36,7 @@ public class AccountMain {
           int usingCount = 0;
           for (int i = 0; i < accounts.length; i++) {
             if(accounts[i] != null) {
-              System.out.println(accounts[i]);
+              System.out.println(accounts[i].);
               usingCount++;
             }
           }
