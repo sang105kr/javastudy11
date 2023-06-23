@@ -6,11 +6,12 @@ public class Coin {
   private int face;  //1 앞면,2 뒷면
 
   public Coin(){
+    super(); // Object클래스의 기본생성자 호출해서 Object 인스턴스 생성
     flip();
   }
 
   public void flip(){
-    face = (int)Math.random()*2+1;
+    face = (int)(Math.random()*2)+1;
   }
 
   public int getFace() {
