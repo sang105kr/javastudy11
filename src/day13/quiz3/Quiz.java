@@ -1,4 +1,4 @@
-package day13.quiz1;
+package day13.quiz3;
 
 import org.w3c.dom.ls.LSOutput;
 
