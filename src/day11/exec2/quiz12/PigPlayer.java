@@ -33,11 +33,12 @@ public class PigPlayer {
         total = 0;
       }
     }else {
-      round += dice1 + dice2;
+      round = dice1 + dice2;
       System.out.printf("현 회차 점수:%d\n", round);
       System.out.println("총점 : " + (total + round));
 
-      if ((total + round) >= goal) {
+      total += round;
+      if (total >= goal) {
         //게임 종료
         stop = true;
       } else {
