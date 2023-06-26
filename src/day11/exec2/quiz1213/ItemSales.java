@@ -17,7 +17,7 @@ public class ItemSales {
 
   //displaySales: 물품의 누적 판매 수량, 누적 판매금액과 누적 할인금액을 출력한다
   public void displaySales(){
-    System.out.printf("누적 판매 수량 : %d \t 누적 판매금액 : %d \t 누적 할인금액 : %d\n",
+    System.out.printf("누적 판매 수량 : %d \t 누적 판매금액 : %.2f \t 누적 할인금액 : %.2f\n",
         numberSold,sales,discounts);
   }
 
