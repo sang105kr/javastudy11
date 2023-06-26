@@ -1,4 +1,4 @@
-package day11.exec2.quiz1213;
+package day11.exec2.quiz1314;
 
 public class ItemSales {
   private int	numberSold;         // 총 판매 수량
