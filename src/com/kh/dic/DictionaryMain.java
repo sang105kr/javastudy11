@@ -9,16 +9,16 @@ public class DictionaryMain {
     System.out.println("메뉴:1.저장 2.검색 3.수정 4.삭제 5.목록 6.색인 7.통계 8.종료");
     boolean stop = false;
     do {
-      switch () {
+      switch (1) {
         case 1:
           break;
-        case 1:
+        case 2:
           break;
-        case 1:
+        case 3:
           break;
-        case 1:
+        case 4:
           break;
-        case 1:
+        case 5:
           break;
 
       }
