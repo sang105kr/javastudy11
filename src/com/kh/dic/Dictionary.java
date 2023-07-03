@@ -7,6 +7,9 @@ import java.util.TreeMap;
 public class Dictionary extends TreeMap<String, String> {
   private static final int WORD_CAPACITY = 5; // 단어 최대 저장 갯수
 
+  public static final int ASC_SORT  = 1;    // 1:오름차순 2:내림차순
+  public static final int DESC_SORT =  2;
+
   public Dictionary() {
     super();
     init();
@@ -39,7 +42,7 @@ public class Dictionary extends TreeMap<String, String> {
       return map;
     }
     //2)일치하는 단어가 없을경우. 즉, 범위검색  ex) sm
-    String frontWord = wordToLowerCase.substring(0, wordToLowerCase.length()-1);  // "s"
+    String frontWord = wordToLowerCase.substring(0, wordToLowerCase.length() - 1);  // "s"
     char lastLetter = wordToLowerCase.charAt(wordToLowerCase.length() - 1); // 단어의 마지막문자. 'm'
     char nextLetter = (char) (lastLetter + 1); // 단어의 마지막문자의 다음문자 'n'
     String nextForntWord = frontWord + String.valueOf(nextLetter); // "sn"
@@ -57,17 +60,51 @@ public class Dictionary extends TreeMap<String, String> {
     boolean flag = false;
     String wordToLowerCase = word.toLowerCase();
 
-    if( replace(word, meaning) == null ){
+    if (replace(wordToLowerCase, meaning) == null) {
       throw new DictionaryException("수정하고자 하는 단어가 없습니다.");
-    }else{
+    } else {
+      flag = true;
+    }
+    return flag;
+  }
+
+  //삭제
+  public boolean delete(String word) {
+    boolean flag = false;
+    String wordToLowerCase = word.toLowerCase();
+
+    if (remove(wordToLowerCase) == null) {
+      throw new DictionaryException("삭제하고자 하는 단어가 없습니다.");
+    } else {
       flag = true;
     }
     return flag;
   }
 
   //목록
-  public Map<String, String> listAll() {
-    return this;
+  public Map<String, String> listAll(int sort) {
+    Map<String, String> map = null;
+    switch (sort) {
+      case ASC_SORT :   // 오름차순
+        map = this;
+        break;
+      case DESC_SORT:_SORT : //내림차순
+        map = this.descendingMap();
+        break;
+      default:
+        throw new DictionaryException("정렬방법이 잘못 지정되었습니다.(1: 오름차순, 2:내림차순)");
+    }
+    return map;
+  }
+
+  //색인
+  public Map<String,String> index(char ch) {
+    char nextLetter = (char)(ch + 1);
+    Map<String,String> map = subMap(String.valueOf(ch),true,String.valueOf(nextLetter),false);
+    if (map.size() == 0) {
+      throw new DictionaryException("초성값으로 시작하는 단어가 없습니다.");
+    }
+    return map;
   }
 
   //초기값

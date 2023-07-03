@@ -56,19 +56,45 @@ public class DictionaryMain {
               System.out.println("단어를 수정하였습니다.!");
             }
             break;
-          case "4":
-            break;
-          case "5": //목록
-            Map<String, String> map = dic.listAll();
-            for (String key : map.keySet()) {
-              System.out.printf("%s : %s\n", key, map.get(key));
+          case "4": //삭제
+            System.out.print("단어 입력 : ");
+            word = scanner.nextLine();
+            if (dic.delete(word)) {
+              System.out.println("단어를 삭제하였습니다.!");
             }
             break;
-          case "6":
+          case "5": //목록
+            System.out.println("1.오름차순 2.내림차순");
+            System.out.print("선택 >> ");
+            String submenu = scanner.nextLine();
+
+            switch (submenu) {
+              case "1":
+                findedWords = dic.listAll(Dictionary.ASC_SORT);
+                break;
+              case "2":
+                findedWords = dic.listAll(Dictionary.DESC_SORT);
+                break;
+            }
+            for (String key : findedWords.keySet()) {
+              System.out.printf("%s : %s\n", key, findedWords.get(key));
+            }
+
             break;
-          case "7":
+          case "6": // 색인
+            do {
+              System.out.print("초성 입력 : ");
+              word = scanner.nextLine();
+              findedWords = dic.index(word.charAt(0));
+              for (String key : findedWords.keySet()) {
+                System.out.printf("%s : %s\n", key, findedWords.get(key));
+              }
+            }while(word.length() != 1);
+
             break;
-          case "8":
+          case "7": //통계
+            break;
+          case "8": //종료
             stop = true;
             break;
           case "9": //초기화
