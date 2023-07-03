@@ -93,6 +93,8 @@ public class DictionaryMain {
 
             break;
           case "7": //통계
+            String statics = dic.showWordStatics();
+            System.out.println(statics);
             break;
           case "8": //종료
             stop = true;

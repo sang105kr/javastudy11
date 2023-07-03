@@ -1,8 +1,10 @@
 package com.kh.dic;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import com.sun.source.tree.Tree;
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Dictionary extends TreeMap<String, String> {
   private static final int WORD_CAPACITY = 5; // 단어 최대 저장 갯수
@@ -105,6 +107,53 @@ public class Dictionary extends TreeMap<String, String> {
       throw new DictionaryException("초성값으로 시작하는 단어가 없습니다.");
     }
     return map;
+  }
+
+  //통계
+  public String showWordStatics() {
+    String info = "";
+    info += "1.저장된 단어의 갯수 : " + size() + "\n";
+    info += "2.단어의 문자수가 가장 많은 단어 : " + getMostCharactorCount() + "\n";
+    info += "3.단어 글자수 내림차순 출력(단어만) : \n" + decendingByLengthOfWord() + "\n";
+
+    return info;
+  }
+
+  //2.단어의 문자수가 가장 많은 단어
+  private String getMostCharactorCount() {
+    Set<String> words = keySet();
+
+    int maxLength = 0;
+    String theLongestWord = "";
+    for (String word : words){
+      if(maxLength < word.length()){
+        //maxLength = word.length();
+        theLongestWord = word;
+      }
+    }
+    return theLongestWord;
+  }
+  //3.단어 글자수 내림차순 출력(단어만)
+  private String decendingByLengthOfWord() {
+    String str = "";
+    // TreeMap의 정렬기준을 생성자를 통해 개발자 의도대로 변경할 수 있다.
+    TreeMap<String,String> map = new TreeMap<>(new Comparator<String>() {
+      @Override
+      public int compare(String o1, String o2) {
+        int result = 1;
+        if(o1.length() > o2.length()){
+          result = -1; // 음수
+        }else if(o1.length() < o2.length()){
+          result = 1; // 양수
+        }
+        return result;
+      }
+    });
+    map.putAll(this);   // 새로 정의된 맵으로 재정렬
+    for(String word : map.keySet()){
+      str += word + "\n";
+    }
+    return str;
   }
 
   //초기값
